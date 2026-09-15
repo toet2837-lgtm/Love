@@ -341,6 +341,15 @@ button{
     25%{opacity:1;transform:scale(1) translateY(0)}
     100%{opacity:0;transform:scale(.9) translateY(-35px)}
 }
+
+/* Romantic upgrade */
+.letter-line{opacity:0;transform:translateY(14px);animation:letterIn .8s ease forwards}
+.letter-line:nth-child(1){animation-delay:.25s}.letter-line:nth-child(2){animation-delay:.8s}.letter-line:nth-child(3){animation-delay:1.35s}.letter-line:nth-child(4){animation-delay:1.9s}.letter-line:nth-child(5){animation-delay:2.45s}
+@keyframes letterIn{to{opacity:1;transform:translateY(0)}}
+.final-question{margin-top:22px;font-family:Pacifico,cursive;font-size:1.25rem;color:#e85d9e;opacity:0;animation:letterIn .9s 3.1s ease forwards}
+.heart-beat{display:inline-block;animation:heartbeat 1.15s infinite}
+@keyframes heartbeat{0%,100%{transform:scale(1)}15%{transform:scale(1.18)}30%{transform:scale(1)}}
+
 </style>
 </head>
 
@@ -404,12 +413,13 @@ button{
         </div>
         <h2>For Wint War Phoo 💗</h2>
         <p>
-            Okay... you caught me! 🥺<br>
-            I love you more than you know. 💕<br>
-            Thank you for making my world<br>
-            a little sweeter every day. 🌷
+            <span class="letter-line">Okay... you caught me! 🥺</span><br>
+            <span class="letter-line">I love you more than you know. 💕</span><br>
+            <span class="letter-line">Thank you for making my world</span><br>
+            <span class="letter-line">a little sweeter every day. 🌷</span>
         </p>
-        <div class="signature">— Your future husband ♡</div>
+        <div class="signature letter-line">— Your future husband <span class="heart-beat">♡</span></div>
+        <div class="final-question">Will you stay with me forever? <span class="heart-beat">💗</span></div>
     </div>
 </div>
 
@@ -492,7 +502,9 @@ function nope(){
     t.style.left=(10+Math.random()*70)+'vw';
     t.style.top=(20+Math.random()*60)+'vh';
     document.body.appendChild(t);
-    setTimeout(()=>t.remove(),900);
+
+    // Keep the NO-message visible a little longer so it is easy to read.
+    setTimeout(()=>t.remove(),1800);
 }
 
 function yes(){
@@ -504,7 +516,8 @@ function openLetter(){
     document.getElementById('envelopeScreen').classList.add('hidden');
     document.getElementById('letterScreen').classList.remove('hidden');
 
-    for(let i=0;i<16;i++){
+    // extra romantic heart burst
+    for(let i=0;i<28;i++){
         setTimeout(()=>{
             const e=document.createElement('div');
             e.className='try';
